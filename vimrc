@@ -81,8 +81,6 @@ nmap <leader>sj   :rightbelow new<CR>
 
 " Make
 map <leader>mm :make<CR><CR>
-" Formatting
-map <leader>f :Tabularize/
 " Show Coffeescript
 map <leader>mc :CoffeeCompile<CR>
 " Quick save
