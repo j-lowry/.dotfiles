@@ -1,0 +1,3 @@
+# My VIM Config Dir #
+
+Just my personal .vim config directory. Nothing to see here, move it along...
