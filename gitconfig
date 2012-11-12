@@ -2,7 +2,7 @@
 	name = rowanu
 	email = rowanu@gmail.com
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = /Users/rowanu/.gitignore_global
 [alias]
   hist = log --pretty=format:\"%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset\" --graph --date=short
 [color]

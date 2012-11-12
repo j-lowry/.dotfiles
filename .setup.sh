@@ -18,3 +18,10 @@ do
   echo "Symlinking $file to $HOME/.$file"
   ln -s $dir/$file ~/.$file
 done
+
+# setup files
+# add git global ignore file
+if [ -e `which git` ]
+then
+  git config --global core.excludesfile ~/.gitignore_global
+fi

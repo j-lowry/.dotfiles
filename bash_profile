@@ -1,12 +1,15 @@
+# General
 export EDITOR=vim
-function hgrep() { history|`which grep` $@|grep -v hgrep; }
-
-# general
 alias ls='ls -G'
 alias ll='ls -al'
+
+# Search history
+function hgrep() { history|`which grep` $@|grep -v hgrep; }
+
+# Webserver
 alias pythonserver='python -m SimpleHTTPServer'
 
-# git
+# Git
 alias ga='git add'
 alias gp='git push'
 alias gpt='git push --tags'

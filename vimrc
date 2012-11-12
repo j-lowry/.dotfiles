@@ -108,6 +108,7 @@ autocmd FileType javascript set efm=%-P%f,
 
 " Coffescript
 let coffee_compiler = '/usr/local/bin/coffee'
+let coffee_make_options = '--print'
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
