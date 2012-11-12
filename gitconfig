@@ -1,8 +1,6 @@
 [user]
-	name = rowanu
+	name = rowan
 	email = rowanu@gmail.com
-[core]
-	excludesfile = /Users/rowanu/.gitignore_global
 [alias]
   hist = log --pretty=format:\"%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset\" --graph --date=short
 [color]
@@ -10,3 +8,5 @@
   diff = auto
   interactive = auto
   status = auto
+[core]
+	excludesfile = /Users/rowanu/.gitignore_global

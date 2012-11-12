@@ -81,8 +81,6 @@ nmap <leader>sj   :rightbelow new<CR>
 
 " Make
 map <leader>mm :make<CR><CR>
-" Show Coffeescript
-map <leader>mc :CoffeeCompile<CR>
 " Quick save
 nmap <leader>w :w!<cr>
 " clear highlighting
@@ -105,13 +103,6 @@ autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set efm=%-P%f,
              \%E%>\ #%n\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
              \%-G%f\ is\ OK.,%-Q
-
-" Coffescript
-let coffee_compiler = '/usr/local/bin/coffee'
-let coffee_make_options = '--print'
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
