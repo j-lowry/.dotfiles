@@ -92,6 +92,54 @@ set spelllang=en_au
 " disable automatic folding
 set nofoldenable
 
+" REVIEW: what do these do?
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Tags
+set tags=./tags,tags
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" Taglist
+let Tlist_Ctags_Cmd = "ctags"
+let Tlist_WinWidth = 50
+map <Leader>l :TlistToggle<cr>
+
+" Light and dark color switching
+colorscheme slate
+nnoremap <silent> <Leader>cc :exec "color " . ((g:colors_name == "slate") ? "morning" : "slate")<CR>
+
+" get out of editing mode
+inoremap jj <Esc> 
+inoremap jw <Esc>:w <CR>
+
+" Drop to shell
+map <Leader>sh :shell<CR>
+
+" Pasting
+set pastetoggle=<Leader>pt 
+set showmode
+
+" Stop highlighting really long lines == SLOW
+set synmaxcol=200
+map <Leader>8 :match ErrorMsg '\%>80v.\+'<CR>
+
+" Toggle line numbers
+map <Leader>nm :set number!<cr>
+
+" TODO: dectect if npm test exists, move somewhere nodejs-specific
+map <leader>nt :!npm test<CR>
+
+""" Filetype Configurations
+
+" Coffeescript
+autocmd BufRead,BufNewFile *.coffee setlocal shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile *.coffee setlocal foldmethod=indent nofoldenable
+let coffee_make_options = '--print'
+autocmd BufWritePost *.coffee silent CoffeeMake | cwindow | redraw!
+map <leader>cc :CoffeeCompile<CR>
+map <leader>cC :CoffeeCompile vertical<CR>
+
 " Ruby
 autocmd FileType ruby setlocal foldmethod=syntax
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
@@ -120,37 +168,3 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
-
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
-" Tags
-set tags=./tags,tags
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-" Taglist
-let Tlist_Ctags_Cmd = "ctags"
-let Tlist_WinWidth = 50
-map <Leader>l :TlistToggle<cr>
-
-" Light and dark color switching
-colorscheme slate
-nnoremap <silent> <Leader>cc :exec "color " . ((g:colors_name == "slate") ? "morning" : "slate")<CR>
-
-" get out of editing mode
-inoremap jj <Esc> 
-inoremap jw <Esc>:w <CR>
-
-" Drop to shell
-map <Leader>ss :shell<CR>
-
-" Pasting
-set pastetoggle=<Leader>pp 
-set showmode
-
-" stop vim from highlighting really long lines == SLOW
-set synmaxcol=200
-map <Leader>8 :match ErrorMsg '\%>80v.\+'<CR>
-
-" Toggle line numbers
-map <Leader>nm :set number!<cr>
