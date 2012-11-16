@@ -53,7 +53,7 @@ set expandtab                    " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 
-" Leader mappings
+" leader mappings
 let mapleader = ","
 let g:mapleader = ","
 
@@ -69,24 +69,24 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 " Split window
-nmap <leader>swh  :topleft  vnew<CR>
-nmap <leader>swl :botright vnew<CR>
-nmap <leader>swk    :topleft  new<CR>
-nmap <leader>swj  :botright new<CR>
+nmap <leader>swh  :topleft  vnew<cr>
+nmap <leader>swl :botright vnew<cr>
+nmap <leader>swk    :topleft  new<cr>
+nmap <leader>swj  :botright new<cr>
 " Split buffer
-nmap <leader>sh   :leftabove  vnew<CR>
-nmap <leader>sl  :rightbelow vnew<CR>
-nmap <leader>sk     :leftabove  new<CR>
-nmap <leader>sj   :rightbelow new<CR>
+nmap <leader>sh   :leftabove  vnew<cr>
+nmap <leader>sl  :rightbelow vnew<cr>
+nmap <leader>sk     :leftabove  new<cr>
+nmap <leader>sj   :rightbelow new<cr>
 
 " Make
-map <leader>mm :make<CR><CR>
+map <leader>mm :make<cr><cr>
 " Quick save
 nmap <leader>w :w!<cr>
 " clear highlighting
 nmap <space> <space>:noh<cr>
 " spelling
-nmap <silent> <leader>s :set spell!<cr>
+nmap <silent> <leader>sp :set spell!<cr>
 set spelllang=en_au
 
 " disable automatic folding
@@ -98,47 +98,52 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 " Tags
 set tags=./tags,tags
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
+map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Taglist
 let Tlist_Ctags_Cmd = "ctags"
 let Tlist_WinWidth = 50
-map <Leader>l :TlistToggle<cr>
+map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
 colorscheme slate
-nnoremap <silent> <Leader>cc :exec "color " . ((g:colors_name == "slate") ? "morning" : "slate")<CR>
+nnoremap <silent> <leader>ts :exec "color " . ((g:colors_name == "slate") ? "morning" : "slate")<cr>
 
 " get out of editing mode
 inoremap jj <Esc> 
-inoremap jw <Esc>:w <CR>
+inoremap jw <Esc>:w <cr>
 
 " Drop to shell
-map <Leader>sh :shell<CR>
+map <leader>ba :shell<cr>
 
 " Pasting
-set pastetoggle=<Leader>pt 
-set showmode
+set pastetoggle=<leader>pt
 
 " Stop highlighting really long lines == SLOW
 set synmaxcol=200
-map <Leader>8 :match ErrorMsg '\%>80v.\+'<CR>
+" Highlight long lines
+highlight OverLength ctermbg=DarkGrey ctermfg=White guibg=#592929
+match OverLength /\%81v.\+/
 
 " Toggle line numbers
-map <Leader>nm :set number!<cr>
+map <leader>nm :set number!<cr>
 
 " TODO: dectect if npm test exists, move somewhere nodejs-specific
-map <leader>nt :!npm test<CR>
+map <leader>nt :!npm test<cr>
+
+" Git
+map <leader>gs :Gstatus<cr>
+map <leader>gc :Gcommit<cr>
 
 """ Filetype Configurations
 
 " Coffeescript
-autocmd BufRead,BufNewFile *.coffee setlocal shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile *.coffee setlocal foldmethod=indent nofoldenable
+autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 let coffee_make_options = '--print'
-autocmd BufWritePost *.coffee silent CoffeeMake | cwindow | redraw!
-map <leader>cc :CoffeeCompile<CR>
-map <leader>cC :CoffeeCompile vertical<CR>
+autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+map <leader>cc :CoffeeCompile<cr>
+map <leader>cC :CoffeeCompile vertical<cr>
 
 " Ruby
 autocmd FileType ruby setlocal foldmethod=syntax
