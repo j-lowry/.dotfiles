@@ -113,8 +113,8 @@ nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zenburn") ? "s
 set synmaxcol=200
 
 " Highlight long lines
-highlight OverLength ctermbg=DarkGrey ctermfg=White guibg=#592929
-match OverLength /\%81v.\+/
+highlight OverLength ctermbg=DarkGrey ctermfg=White
+map <leader>80 :match OverLength /\%81v.\+/<cr>
 
 " get out of editing mode
 inoremap jj <Esc> 
