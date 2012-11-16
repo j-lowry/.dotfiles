@@ -106,8 +106,15 @@ let Tlist_WinWidth = 50
 map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
-colorscheme slate
-nnoremap <silent> <leader>ts :exec "color " . ((g:colors_name == "slate") ? "morning" : "slate")<cr>
+colorscheme zenburn
+nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zenburn") ? "slate" : "zenburn")<cr>
+
+" Stop highlighting really long lines == SLOW
+set synmaxcol=200
+
+" Highlight long lines
+highlight OverLength ctermbg=DarkGrey ctermfg=White guibg=#592929
+match OverLength /\%81v.\+/
 
 " get out of editing mode
 inoremap jj <Esc> 
@@ -118,12 +125,6 @@ map <leader>ba :shell<cr>
 
 " Pasting
 set pastetoggle=<leader>pt
-
-" Stop highlighting really long lines == SLOW
-set synmaxcol=200
-" Highlight long lines
-highlight OverLength ctermbg=DarkGrey ctermfg=White guibg=#592929
-match OverLength /\%81v.\+/
 
 " Toggle line numbers
 map <leader>nm :set number!<cr>
