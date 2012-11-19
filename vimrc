@@ -106,8 +106,8 @@ let Tlist_WinWidth = 50
 map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
-colorscheme zenburn
-nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zenburn") ? "slate" : "zenburn")<cr>
+colorscheme xoria256
+nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "xoria256") ? "zellner" : "xoria256")<cr>
 
 " Stop highlighting really long lines == SLOW
 set synmaxcol=200
@@ -129,7 +129,7 @@ set pastetoggle=<leader>pt
 " Toggle line numbers
 map <leader>nm :set number!<cr>
 
-" TODO: dectect if npm test exists, move somewhere nodejs-specific
+" TODO: dectect if npm exists (ie. has package.json), or move somewhere nodejs-specific (*.js, *.coffee)
 map <leader>nt :!npm test<cr>
 
 " Git
