@@ -9,10 +9,20 @@ silent! call pathogen#helptags()
 " for powerline? 
 set encoding=utf-8 
 
-filetype plugin indent on         " Turn on file type detection.
-syntax enable                     " Turn on syntax highlighting.
-set ofu=syntaxcomplete#Complete   " Omni completion
-set t_Co=256
+filetype plugin indent on " Turn on file type detection.
+syntax enable " Turn on syntax highlighting.
+set t_Co=256 " Terminal colours available
+
+" Text completion
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
+endif
+set completeopt=longest,menuone
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingBackward = '<tab>'
 
 runtime macros/matchit.vim        " Load the matchit plugin.
 
@@ -106,8 +116,8 @@ let Tlist_WinWidth = 50
 map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
-colorscheme xoria256
-nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "xoria256") ? "zellner" : "xoria256")<cr>
+colorscheme zellner
+nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zellner") ? "xoria256" : "zellner")<cr>
 
 " Stop highlighting really long lines == SLOW
 set synmaxcol=200
@@ -125,6 +135,10 @@ map <leader>ba :shell<cr>
 
 " Pasting
 set pastetoggle=<leader>pt
+
+" Mouse
+" TODO: Change this to toggle mouse on/off
+map <leader>mo :set mouse=a<cr>
 
 " Toggle line numbers
 map <leader>nm :set number!<cr>
