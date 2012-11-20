@@ -10,9 +10,6 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/smartinput"]
-	path = vim/bundle/smartinput
-	url = git://github.com/kana/vim-smartinput.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
@@ -37,3 +34,6 @@
 [submodule "vim/bundle/AutoComplPop"]
 	path = vim/bundle/AutoComplPop
 	url = git://github.com/vim-scripts/AutoComplPop.git
+[submodule "vim/bundle/auto-pairs"]
+	path = vim/bundle/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git

@@ -1,8 +1,6 @@
 " Must come first because it changes other options.
 set nocompatible
 
-filetype off 
-silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#infect() 
 silent! call pathogen#helptags()
 
@@ -13,6 +11,8 @@ filetype plugin indent on " Turn on file type detection.
 syntax enable " Turn on syntax highlighting.
 set t_Co=256 " Terminal colours available
 
+runtime macros/matchit.vim        " Load the matchit plugin.
+
 " Text completion
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
@@ -21,10 +21,9 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 set completeopt=longest,menuone
-let g:SuperTabMappingForward = '<s-tab>'
 let g:SuperTabMappingBackward = '<tab>'
-
-runtime macros/matchit.vim        " Load the matchit plugin.
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -107,7 +106,7 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " Tags
-set tags=./tags,tags
+set tags=./tags;/
 map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Taglist
@@ -119,8 +118,8 @@ map <leader>l :TlistToggle<cr>
 colorscheme zellner
 nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zellner") ? "xoria256" : "zellner")<cr>
 
-" Stop highlighting really long lines == SLOW
-set synmaxcol=200
+" Stop highlighting really long lines is SLOW
+set synmaxcol=240
 
 " Highlight long lines
 highlight OverLength ctermbg=DarkGrey ctermfg=White
@@ -143,22 +142,16 @@ map <leader>mo :set mouse=a<cr>
 " Toggle line numbers
 map <leader>nm :set number!<cr>
 
-" TODO: dectect if npm exists (ie. has package.json), or move somewhere nodejs-specific (*.js, *.coffee)
-map <leader>nt :!npm test<cr>
+" If there is a package file, enable npm test
+if filereadable("package.json")
+  map <leader>nt :!npm test<cr>
+endif
 
 " Git
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
 
 """ Filetype Configurations
-
-" Coffeescript
-autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
-autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
-let coffee_make_options = '--print'
-autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-map <leader>cc :CoffeeCompile<cr>
-map <leader>cC :CoffeeCompile vertical<cr>
 
 " Ruby
 autocmd FileType ruby setlocal foldmethod=syntax
@@ -171,6 +164,16 @@ autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set efm=%-P%f,
              \%E%>\ #%n\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
              \%-G%f\ is\ OK.,%-Q
+
+" Coffeescript
+let coffee_make_options = '--print'
+let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
+autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
+autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+map <leader>cc :CoffeeCompile<cr>
+map <leader>cC :CoffeeCompile vertical<cr>
+
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
