@@ -106,7 +106,8 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " Tags
-set tags=./tags;/
+map <leader>ct :silent! !ctags -R 2> /dev/null &<cr>:redraw!<cr>
+set tags=./tags,/
 map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Taglist
