@@ -1,6 +1,7 @@
 --python-kinds=-i
 --langdef=coffee
 --langmap=coffee:.coffee
---regex-coffee=/^[ \t]*class ([a-zA-Z_$][0-9a-zA-Z_$]*).*$/\1/c,class/
---regex-coffee=/^[ \t]*([a-zA-Z_$@][0-9a-zA-Z_$\.]*)[ \t]*[:=].*[=-]>.*$/\1/f,function/
---regex-coffee=/^[ \t]*([a-zA-Z_$@][0-9a-zA-Z_$\.]*)[ \t]*=[^->\n]*$/\1/v,variable/
+--regex-coffee=/(^|=[ \t ])*class ([A-Za-z.]+)( extends [A-Za-z.]+ )?$/\2/c,class/
+--regex-coffee=/^[ \t ]*@?([A-Za-z.]+):.*[-=]>.*$/\1/f,function/
+--regex-coffee=/^[ \t ]*([A-Za-z.]+)[ \t ]+=.*[-=]>.*$/\1/f,function/
+--regex-coffee=/^[ \t ]*([A-Za-z.]+)[ \t ]+=[^->\n]*$/\1/v,variable/
