@@ -1,3 +1,4 @@
+--recurse
 --python-kinds=-i
 --langdef=coffee
 --langmap=coffee:.coffee

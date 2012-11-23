@@ -151,6 +151,7 @@ endif
 " Git
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
+map <leader>gp :!git push<cr>
 
 """ Filetype Configurations
 
