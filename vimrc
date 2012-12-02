@@ -116,7 +116,7 @@ let Tlist_WinWidth = 50
 map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
-colorscheme zellner
+colorscheme xoria256
 nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zellner") ? "xoria256" : "zellner")<cr>
 
 " Stop highlighting really long lines is SLOW
@@ -126,9 +126,10 @@ set synmaxcol=240
 highlight OverLength ctermbg=DarkGrey ctermfg=White
 map <leader>80 :match OverLength /\%81v.\+/<cr>
 
-" get out of editing mode
-inoremap jj <Esc> 
-inoremap jw <Esc>:w <cr>
+" Esc is not Vim's friend
+cnoremap ;; <Esc>
+inoremap ;; <C-[>
+inoremap ;w <C-[>:w <cr>
 
 " Drop to shell
 map <leader>ba :shell<cr>
