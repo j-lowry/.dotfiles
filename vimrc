@@ -117,7 +117,7 @@ map <leader>l :TlistToggle<cr>
 
 " Light and dark color switching
 colorscheme xoria256
-nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "zellner") ? "xoria256" : "zellner")<cr>
+nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "mayansmoke") ? "xoria256" : "mayansmoke")<cr>
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
