@@ -62,6 +62,13 @@ set expandtab                    " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 
+" Remember until the end of time
+set history=1000
+
+" Jump to column of marking by default
+nnoremap ' `
+nnoremap ` '
+
 " leader mappings
 let mapleader = ","
 let g:mapleader = ","
