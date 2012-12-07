@@ -168,7 +168,7 @@ autocmd FileType ruby setlocal foldmethod=syntax
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 
 " Javascript
-autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=4 tabstop=4
+autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=2 tabstop=2
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set efm=%-P%f,
