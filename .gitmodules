@@ -41,3 +41,6 @@
 [submodule "vim/bundle/AutoTag"]
 	path = vim/bundle/AutoTag
 	url = git://github.com/vim-scripts/AutoTag.git
+[submodule "vim/bundle/smartinput"]
+	path = vim/bundle/smartinput
+	url = git://github.com/kana/vim-smartinput.git
