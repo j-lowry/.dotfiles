@@ -41,3 +41,6 @@
 [submodule "vim/bundle/AutoTag"]
 	path = vim/bundle/AutoTag
 	url = git://github.com/vim-scripts/AutoTag.git
+[submodule "vim/bundle/autoclose"]
+	path = vim/bundle/autoclose
+	url = git://github.com/Townk/vim-autoclose.git
