@@ -5,6 +5,8 @@ alias ll='ls -al'
 
 # Search history
 function hgrep() { history|`which grep` $@|grep -v hgrep; }
+# Running processes
+function psgrep() { ps -ef|`which grep` $@|grep -v hgrep; }
 
 # Get aliases
 if [ -f ~/.bash_aliases ]; then
