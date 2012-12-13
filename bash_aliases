@@ -106,7 +106,7 @@ Hostname="\h"
 FQDN="\H"
 
 # Get the git branch
-alias __git_ps1="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2>/dev/null"
+alias __git_ps1="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2> /dev/null"
 
 # Change the status depending on the state of the repo
 # TODO: Fix colours for branch statuses
