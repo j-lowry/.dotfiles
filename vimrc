@@ -134,9 +134,9 @@ highlight OverLength ctermbg=DarkGrey ctermfg=White
 map <leader>80 :match OverLength /\%81v.\+/<cr>
 
 " Esc is not Vim's friend
-cnoremap ;; <Esc>
-inoremap ;; <C-[>
-inoremap ;w <C-[>:w <cr>
+cnoremap jk <Esc>
+inoremap jk <C-[>
+inoremap jw <C-[>:w <cr>
 
 " Drop to shell
 map <leader>ba :shell<cr>
