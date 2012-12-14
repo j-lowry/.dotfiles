@@ -15,8 +15,8 @@ echo "Copying files from $dir to $HOME"
 for file in `ls $dir`
 do
   mv ~/.$file $olddir
-  echo "Symlinking $dir/$file at ~/.$file "
-  ln -s $dir/$file ~/.$file
+  echo "Copying $dir/$file at ~/.$file"
+  cp -r $dir/$file ~/.$file
 done
 
 # setup files
