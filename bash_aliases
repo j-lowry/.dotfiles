@@ -1,3 +1,6 @@
+# General
+alias ll='ls -al'
+
 # Webserver
 alias pythonserver='python -m SimpleHTTPServer'
 

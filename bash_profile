@@ -1,7 +1,5 @@
 # General
 export EDITOR=vim
-alias ls='ls -G'
-alias ll='ls -al'
 
 # Search history
 function hgrep() { history|`which grep` $@|grep -v hgrep; }
