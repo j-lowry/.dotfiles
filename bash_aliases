@@ -112,19 +112,24 @@ FQDN="\H"
 alias __git_ps1="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2> /dev/null"
 
 # Change the status depending on the state of the repo
-# TODO: Fix colours for branch statuses
+# TODO: Fix colours for branch statuses eg. echo "$Green($(__git_ps1))"
 function git_status {
-  if [ "$(__git_ps1)" != "" ]; then # A git repository
-    git status 2> /dev/null | grep "nothing to commit" &> /dev/null
-    if [ "$?" -eq "0" ]; then # Clean repository
-      echo "$(__git_ps1) ✔"
-      # echo "($(__git_ps1))"
-      # echo "$Green($(__git_ps1))"
-    else # Changes to working tree
-      echo "$(__git_ps1) ✘"
-      # echo "{$(__git_ps1)}"
-      # echo "$IRed{$(__git_ps1)}"
+  if [ "$(__git_ps1)" != "" ]; then
+    # A git repository
+    branch="$(__git_ps1)"
+    status=`git status -s 2> /dev/null`
+    if [[ "$status" == *M* ]]; then
+      # Local changes
+      branch="$branch ✘"
+    else
+      # No locally modified files
+      branch="$branch ✔"
     fi
+    if [[ "$status" == *\?\?* ]]; then
+      # Untracked files
+      branch="$branch ✘"
+    fi
+    echo "$branch"
   fi
 }
 
