@@ -124,10 +124,10 @@ function git_status {
     else
       # No locally modified files
       branch="$branch ✔"
-    fi
-    if [[ "$status" == *\?\?* ]]; then
-      # Untracked files
-      branch="$branch ✘"
+      if [[ "$status" == *\?\?* ]]; then
+        # Untracked files
+        branch="$branch ✘"
+      fi
     fi
     echo "$branch"
   fi
