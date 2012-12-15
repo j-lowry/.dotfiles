@@ -103,6 +103,7 @@ PathShort="\w"
 PathFull="\W"
 NewLine="\n"
 Time24h="\t"
+Date="\d"
 Username="\u"
 Command="\!"
 Hostname="\h"
@@ -133,12 +134,14 @@ function git_status {
   fi
 }
 
-# Prompt
+# ♖ Prompt
 PS1=""
 PS1="$PS1$White[$Yellow$Command$White] "
 PS1="$PS1$Purple$Username@$Hostname "
+PS1="$PS1$Blue$Date "
 PS1="$PS1$Blue$Time24h "
 PS1="$PS1$Yellow$PathShort "
+PS1="$PS1$Cyan\$(git_status) "
 PS1="$PS1$Cyan\$(git_status) "
 PS1="$PS1$Color_Off$NewLine"
 export PS1
