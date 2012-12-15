@@ -6,7 +6,9 @@
 dir=~/.dotfiles                    # dotfiles (ie. this) directory
 olddir=~/.dotfiles.old             # old dotfiles backup directory
 
-# create dotfiles_old in homedir
+# create dotfiles.old in homedir
+echo "Removing previous backups in $olddir"
+rm -rf $olddir
 echo "Existing files will be backed-up to $olddir"
 mkdir -p $olddir
 
