@@ -104,7 +104,7 @@ PathFull="\W"
 NewLine="\n"
 Time24h="\t"
 Username="\u"
-Command="\#"
+Command="\!"
 Hostname="\h"
 FQDN="\H"
 
