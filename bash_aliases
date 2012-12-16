@@ -1,5 +1,6 @@
 # General
 alias ll='ls -al'
+alias rsyncssh='rsync --archive --compress --progress --rsh=ssh'
 
 # Webserver
 alias pythonserver='python -m SimpleHTTPServer'
@@ -125,7 +126,7 @@ function git_status {
     else
       # No locally modified files
       branch="$branch ✔"
-      if [[ "$status" == *\?\?* ]]; then
+      if [[ "$status" == *\?* ]]; then
         # Untracked files
         branch="$branch ✘"
       fi
@@ -141,7 +142,6 @@ PS1="$PS1$Purple$Username@$Hostname "
 PS1="$PS1$Blue$Date "
 PS1="$PS1$Blue$Time24h "
 PS1="$PS1$Yellow$PathShort "
-PS1="$PS1$Cyan\$(git_status) "
 PS1="$PS1$Cyan\$(git_status) "
 PS1="$PS1$Color_Off$NewLine"
 export PS1
