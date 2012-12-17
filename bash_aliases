@@ -119,8 +119,10 @@ function git_status {
   if [ "$(__git_ps1)" != "" ]; then
     # A git repository
     branch="$(__git_ps1)"
-    status=`git status -s 2> /dev/null`
-    if [[ "$status" == *M* ]]; then
+    status=`git status --porcelain 2> /dev/null`
+    # Matches local modifications or additions
+    re="^ M|^A"
+    if [[ $status =~ $re ]]; then
       # Local changes
       branch="$branch ✘"
     else
