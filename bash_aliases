@@ -120,8 +120,8 @@ function git_status {
     # A git repository
     branch="$(__git_ps1)"
     status=`git status --porcelain 2> /dev/null`
-    # Matches local modifications or additions
-    re="^ M|^A"
+    # Matches local modifications, deletions, or additions
+    re="^ M|^D|^A"
     if [[ $status =~ $re ]]; then
       # Local changes
       branch="$branch ✘"

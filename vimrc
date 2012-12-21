@@ -113,8 +113,9 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " Tags
-map <leader>ct :silent! !ctags -R 2> /dev/null &<cr>:redraw!<cr>
-set tags=./tags,/
+map <leader>ct :silent! !ctags -R . 2> /dev/null &<cr>:redraw!<cr>
+map <leader>ctg :silent! !ctags -R --append --tag-relative=no -f ~/.tags `pwd` 2> /dev/null &<cr>:redraw!<cr>
+set tags=./tags,tags,~/.tags
 map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Taglist
@@ -136,6 +137,7 @@ map <leader>80 :match OverLength /\%81v.\+/<cr>
 " Esc is not Vim's friend
 cnoremap jk <Esc>
 inoremap jk <C-[>
+vnoremap jk <C-[>
 inoremap jw <C-[>:w <cr>
 
 " Drop to shell
