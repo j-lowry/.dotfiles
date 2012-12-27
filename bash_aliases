@@ -137,12 +137,10 @@ function git_status {
   fi
 }
 
-# "]]"
 # ♖ Prompt
 PS1=""
 PS1="$PS1$White[$Yellow$Command$White] "
-# Changes colour depending on hostname
-PS1="$PS1\[\e[1;$((31 + $(hostname | cksum | cut -c1-3) % 6))m\]$Username @ $Hostname "
+PS1="$PS1$Purple$Username@$Hostname "
 PS1="$PS1$Blue$Date "
 PS1="$PS1$Blue$Time24h "
 PS1="$PS1$Yellow$PathShort "
