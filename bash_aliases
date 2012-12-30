@@ -123,18 +123,15 @@ function git_status {
     # A git repository
     branch="$(__git_ps1)"
     status=`git status --porcelain 2> /dev/null`
-    # Matches local modifications, deletions, or additions
-    re="^ M|^D|^A"
-    if [[ $status =~ $re ]]; then
-      # Local changes
-      branch="$branch ✘"
-    else
+    if [[ -z $status ]]; then
       # No loclly modified files
       branch="$branch ✔"
-      if [[ "$status" == *\?* ]]; then
-        # Untracked files
-        branch="$branch ✘"
-      fi
+    elif [[ "$status" =~ .*\?.* ]]; then
+      # Untracked files
+      branch="$branch ✶"
+    else
+      # Local changes
+      branch="$branch ✘"
     fi
     echo "$branch"
   fi

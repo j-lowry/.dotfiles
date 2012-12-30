@@ -137,7 +137,6 @@ map <leader>80 :match OverLength /\%81v.\+/<cr>
 " Esc is not Vim's friend
 cnoremap jk <Esc>
 inoremap jk <C-[>
-vnoremap jk <C-[>
 inoremap jw <C-[>:w <cr>
 
 " Drop to shell
