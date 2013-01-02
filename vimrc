@@ -40,6 +40,8 @@ set smartcase                     " But case-sensitive if expression contains a 
 
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
+set cursorline
+set cursorcolumn
 
 " Searching
 set incsearch                     " Highlight matches as you type.
@@ -182,8 +184,8 @@ let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
 autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-map <leader>cc :CoffeeCompile<cr>
-map <leader>cC :CoffeeCompile vertical<cr>
+map <leader>cc :CoffeeCompile 15<cr>
+map <leader>cC :CoffeeCompile vertical 15<cr>
 
 
 " Python
@@ -192,10 +194,11 @@ autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseab
 autocmd FileType python set errorformat=%f:%l:\ %m,%-G%.%#
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-" HTML/CSS
+" HTML/CSS/LESS
 autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.less set filetype=css
 
 " Data files
 autocmd BufNewFile,BufRead *.json set ft=javascript

@@ -125,15 +125,15 @@ function git_status {
     status=`git status --porcelain 2> /dev/null`
     if [[ -z $status ]]; then
       # No loclly modified files
-      branch="$branch ✔"
-    elif [[ "$status" =~ .*\?.* ]]; then
-      # Untracked files
-      branch="$branch ✶"
+      branch_status="✔"
     else
-      # Local changes
-      branch="$branch ✘"
+      branch_status="✘"
     fi
-    echo "$branch"
+    if [[ "$status" =~ .*\?.* ]]; then
+      # Untracked files
+      branch_status="$branch_status ✶"
+    fi
+    echo "$branch $branch_status"
   fi
 }
 
