@@ -114,14 +114,13 @@ Hostname="\h"
 FQDN="\H"
 
 # Get the git branch
-alias __git_ps1="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2> /dev/null"
+alias branch="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2> /dev/null"
 
 # Change the status depending on the state of the repo
 # TODO: Fix colours for branch statuses eg. echo "$Green($(__git_ps1))"
 function git_status {
-  if [ "$(__git_ps1)" != "" ]; then
+  if [ "$(branch)" != "" ]; then
     # A git repository
-    branch="$(__git_ps1)"
     status=`git status --porcelain 2> /dev/null`
     if [[ -z $status ]]; then
       # No loclly modified files
@@ -129,7 +128,7 @@ function git_status {
     else
       branch_status="✘"
     fi
-    echo "$branch $branch_status"
+    echo "$(branch) $branch_status"
   fi
 }
 
