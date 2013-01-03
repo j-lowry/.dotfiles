@@ -129,10 +129,6 @@ function git_status {
     else
       branch_status="✘"
     fi
-    if [[ "$status" =~ .*\?.* ]]; then
-      # Untracked files
-      branch_status="$branch_status ✶"
-    fi
     echo "$branch $branch_status"
   fi
 }
