@@ -167,7 +167,7 @@ map <leader>gp :!git push<cr>
 """ Filetype Configurations
 
 " Ruby
-autocmd FileType ruby setlocal foldmethod=syntax
+autocmd FileType ruby setlocal foldmethod=manual shiftwidth=2 tabstop=2
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 
 " Javascript
@@ -205,3 +205,5 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
+" Email (vmail)
+autocmd FileType mail setlocal spell
