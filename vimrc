@@ -135,6 +135,7 @@ set synmaxcol=240
 " Highlight long lines
 highlight OverLength ctermbg=DarkGrey ctermfg=White
 map <leader>80 :match OverLength /\%81v.\+/<cr>
+set textwidth=80
 
 " Esc is not Vim's friend
 cnoremap jk <Esc>
