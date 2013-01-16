@@ -3,7 +3,7 @@ alias ll='ls -al'
 alias rsyncssh='rsync --archive --compress --progress --rsh=ssh'
 
 # Webserver
-alias pythonserver='python -m SimpleHTTPServer'
+alias simplehttpserver='python -m SimpleHTTPServer'
 
 # Other
 alias r='rails'
