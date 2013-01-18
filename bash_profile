@@ -1,5 +1,7 @@
+
 # General
 export EDITOR=vim
+set -o vi
 
 # Search history
 function hgrep() { history|`which grep` $@|grep -v hgrep; }

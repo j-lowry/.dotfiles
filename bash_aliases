@@ -40,7 +40,6 @@ alias gsubi='git submodule init'
 alias gsubu='git submodule update'
 alias gt='git tag'
 
-
 # Colours
 Color_Off="\[\033[0m\]"       # Text Reset
 Black="\[\033[0;30m\]"        # Black
@@ -147,3 +146,11 @@ PS1="$PS1$Yellow$PathShort "
 PS1="$PS1$Color_Off\$(git_status) "
 PS1="$PS1$NewLine"
 export PS1
+
+# Vi mode bash
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
+# ^p check for partial match in history
+bind -m vi-insert "\C-p":dynamic-complete-history
+# ^n cycle through the list of partial matches
+bind -m vi-insert "\C-n":menu-complete
