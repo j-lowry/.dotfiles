@@ -132,6 +132,9 @@ nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "mayansmoke") ?
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
 
+" Make gitgutter's column look nicer
+highlight clear SignColumn
+
 " Highlight long lines
 highlight OverLength ctermbg=DarkGrey ctermfg=White
 map <leader>80 :match OverLength /\%81v.\+/<cr>
