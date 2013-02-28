@@ -120,10 +120,8 @@ map <leader>ctg :silent! !ctags -R --append --tag-relative=no -f ~/.tags `pwd` 2
 set tags=./tags,tags,~/.tags
 map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
-" Taglist
-let Tlist_Ctags_Cmd = "ctags"
-let Tlist_WinWidth = 50
-map <leader>l :TlistToggle<cr>
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Light and dark color switching
 colorscheme xoria256
