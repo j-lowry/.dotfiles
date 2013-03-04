@@ -142,9 +142,9 @@ function git_status {
 PS1=""
 PS1="$PS1$White[$Yellow$Command$White] "
 PS1="$PS1$IYellow$PathShort "
-PS1="$PS1$Purple$Username@$Hostname "
 PS1="$PS1$Blue$Date "
 PS1="$PS1$Blue$Time24h "
+PS1="$PS1$Purple$Username$Purple@$Hostname "
 PS1="$PS1$Color_Off\$(git_status) "
 PS1="$PS1$NewLine"
 export PS1
