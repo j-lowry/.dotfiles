@@ -1,7 +1,13 @@
-! Switch caps lock and (left) control
+! Change caps lock to ctrl
 remove Lock = Caps_Lock
-remove Control = Control_L
-keysym Control_L = Caps_Lock
 keysym Caps_Lock = Control_L
-add Lock = Caps_Lock
 add Control = Control_L
+! Make right ctrl to caps lock
+remove Control = Control_R
+keysym Control_R = Caps_Lock
+add Lock = Caps_Lock
+! Make HHKB meta key be mod4
+keycode 102 = Super_L
+keycode 100 = Super_R
+add mod4 = Super_L
+add mod4 = Super_R

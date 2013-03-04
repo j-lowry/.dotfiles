@@ -41,7 +41,6 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.getdir("config") .. "/themes/zenburn/theme.lua")
 
-
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
@@ -88,7 +87,7 @@ end
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "local cfg", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
+   { "reload", awesome.restart },
    { "quit", awesome.quit }
 }
 
@@ -119,6 +118,8 @@ batwidget:set_color("#55FF55")
 -- {{{ Battery state
 -- Initialize widget
 vicious.register(batwidget, vicious.widgets.bat, "$2", 120, "BAT0")
+
+
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
