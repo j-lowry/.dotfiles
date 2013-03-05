@@ -7,12 +7,18 @@ alias simplehttpserver='python -m SimpleHTTPServer'
 
 # Other
 alias r='rails'
+alias ack='ack-grep'
+
+# SSH
+alias sshr='ssh rowan@rho.rookstudios.net'
+# alias iotatunnel='ssh -f -N -D 9999 rowan@iota.rookstudios.net'
 
 # Git
 alias ga='git add'
 alias gb='git branch'
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias gct='git checkout -t'
 alias gcl='git clone'
 alias gcm='git commit -m'
 alias gcma='git commit -am'
@@ -142,9 +148,9 @@ function git_status {
 PS1=""
 PS1="$PS1$White[$Yellow$Command$White] "
 PS1="$PS1$IYellow$PathShort "
+PS1="$PS1$Purple$Username$Purple@$Hostname "
 PS1="$PS1$Blue$Date "
 PS1="$PS1$Blue$Time24h "
-PS1="$PS1$Purple$Username$Purple@$Hostname "
 PS1="$PS1$Color_Off\$(git_status) "
 PS1="$PS1$NewLine"
 export PS1
