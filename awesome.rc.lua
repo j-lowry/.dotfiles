@@ -62,14 +62,14 @@ layouts =
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.floating,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.spiral.dwindle
 }
 -- }}}
 
@@ -105,22 +105,6 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
-
--- Vicious Widgets
--- {{{ Battery state
--- Initialize widget
-batwidget = awful.widget.progressbar({ layout = awful.widget.layout.horizontal.rightleft })
-batwidget:set_width(10)
-batwidget:set_height(25)
-batwidget:set_vertical(true)
-batwidget:set_background_color('#FF5555')
-batwidget:set_color("#55FF55")
-
--- {{{ Battery state
--- Initialize widget
-vicious.register(batwidget, vicious.widgets.bat, "$2", 120, "BAT0")
-
-
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -201,7 +185,6 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        batwidget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
