@@ -25,6 +25,9 @@ let g:SuperTabMappingBackward = '<tab>'
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
+" CtrlP
+let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
+
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
 
