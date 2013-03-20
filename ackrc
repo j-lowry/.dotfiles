@@ -1,2 +1,4 @@
 --ignore-dir=node_modules
---type-add=coffee=.coffee
+--type-set=coffee=.coffee
+--type-set=haml=.haml
+--type-set=css=.sass,.scss
