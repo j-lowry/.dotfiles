@@ -16,6 +16,7 @@ alias sshr='ssh rowan@rho.rookstudios.net'
 # Git
 alias ga='git add'
 alias gb='git branch'
+alias gbl='git blame'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gct='git checkout -t'
