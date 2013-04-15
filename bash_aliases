@@ -22,6 +22,7 @@ alias gcb='git checkout -b'
 alias gct='git checkout -t'
 alias gcl='git clone'
 alias gcm='git commit -m'
+alias gcmv='git commit' # Use Vim to enter message
 alias gcam='git commit --amend'
 alias gcma='git commit -am'
 alias gcv='git commit -v'
@@ -129,6 +130,8 @@ FQDN="\H"
 
 # Get the git branch
 alias branch="git branch 2> /dev/null | grep '*' | sed 's/* \(.*\)/\1/' 2> /dev/null"
+# Get the timestamp
+alias timestamp="date +'%H:%M:%S %a %d/%m/%y %Z%z %V %s'"
 
 # Change the status depending on the state of the repo
 # TODO: Fix colours for branch statuses eg. echo "$Green($(__git_ps1))"
@@ -151,8 +154,7 @@ PS1=""
 PS1="$PS1$White[$Yellow$Command$White] "
 PS1="$PS1$IYellow$PathShort "
 PS1="$PS1$Purple$Username$Purple@$Hostname "
-PS1="$PS1$IBlue$Date "
-PS1="$PS1$IBlue$Time24h "
+PS1="$PS1$Blue\$(timestamp) "
 PS1="$PS1$Color_Off\$(git_status) "
 PS1="$PS1$NewLine"
 export PS1
