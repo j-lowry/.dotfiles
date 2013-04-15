@@ -127,9 +127,9 @@ map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 nmap <F8> :TagbarToggle<CR>
 
 " Light and dark color switching
-colorscheme Tomorrow-Night
+colorscheme molokai
 let g:molokai_original=1
-nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "Tomorrow") ? "molokai" : "Tomorrow")<cr>
+nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "mayansmoke") ? "molokai" : "mayansmoke")<cr>
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
@@ -167,6 +167,7 @@ endif
 
 " Git
 map <leader>gs :Gstatus<cr>
+map <leader>gb :Gblame<cr>
 map <leader>gc :Gcommit<cr>
 map <leader>gp :!git push<cr>
 
