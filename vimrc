@@ -1,6 +1,7 @@
 " Must come first because it changes other options.
 set nocompatible
 
+
 silent! call pathogen#infect() 
 silent! call pathogen#helptags()
 
@@ -45,6 +46,7 @@ set number                        " Show line numbers.
 set ruler                         " Show cursor position.
 set cursorline
 set cursorcolumn
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " Searching
 set incsearch                     " Highlight matches as you type.
@@ -124,12 +126,7 @@ set tags=./tags,tags,~/.tags
 map <C-\> :tab split<cr>:exec("tag ".expand("<cword>"))<cr>
 map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-" Light and dark color switching
-colorscheme molokai
-let g:molokai_original=1
-nnoremap <silent> <leader>cs :exec "color " . ((g:colors_name == "mayansmoke") ? "molokai" : "mayansmoke")<cr>
+nmap <F7> :TagbarToggle<CR>
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
@@ -139,7 +136,7 @@ highlight clear SignColumn
 
 " Highlight long lines
 highlight OverLength ctermbg=DarkGrey ctermfg=White
-map <leader>80 :match OverLength /\%81v.\+/<cr>
+map <F8> :match OverLength /\%81v.\+/<cr>
 set textwidth=80
 
 " Esc is not Vim's friend
@@ -151,7 +148,7 @@ inoremap jw <C-[>:w <cr>
 map <leader>ba :shell<cr>
 
 " Pasting
-set pastetoggle=<leader>pt
+set pastetoggle=<F2>
 
 " Mouse
 " TODO: Change this to toggle mouse on/off
@@ -214,3 +211,12 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
 " Email (vmail)
 autocmd FileType mail setlocal spell
+
+set background=light
+colorscheme solarized
+" Works with non-Solarized terminal colours
+function NoTerminalColours ()
+  let g:solarized_termcolors = 256
+  colorscheme solarized
+endfunction
+map <F3> :call NoTerminalColours()<CR>
