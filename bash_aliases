@@ -1,4 +1,5 @@
 # General
+alias l='ls'
 alias ll='ls -al'
 alias rsyncssh='rsync --archive --compress --progress --rsh=ssh'
 
@@ -8,6 +9,10 @@ alias simplehttpserver='python -m SimpleHTTPServer'
 # Other
 alias r='rails'
 alias ack='ack-grep'
+# Opens files matching an ack query in vim tabs
+function vck() {
+  vim -p `ack -l $1`
+}
 
 # SSH
 alias sshr='ssh rowan@rho.rookstudios.net'
@@ -151,10 +156,10 @@ function git_status {
 
 # ♖ Prompt
 PS1=""
-PS1="$PS1$White[$Yellow$Command$White] "
-PS1="$PS1$IYellow$PathShort "
 PS1="$PS1$Purple$Username$Purple@$Hostname "
-PS1="$PS1$Blue\$(timestamp) "
+PS1="$PS1$Blue\$(timestamp)$NewLine"
+PS1="$PS1$White[$Yellow$Command$White] "
+PS1="$PS1$Cyan$PathShort "
 PS1="$PS1$Color_Off\$(git_status) "
 PS1="$PS1$NewLine"
 export PS1

@@ -1,3 +1,4 @@
+--ignore-case
 --ignore-dir=node_modules
 --type-set=coffee=.coffee
 --type-set=haml=.haml
