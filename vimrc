@@ -47,6 +47,7 @@ set ruler                         " Show cursor position.
 set cursorline
 set cursorcolumn
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+nnoremap <F3> :set list!<CR>
 
 " Searching
 set incsearch                     " Highlight matches as you type.
@@ -128,22 +129,6 @@ map <A-]> :vsp <cr>:exec("tag ".expand("<cword>"))<cr>
 " Tagbar
 nmap <F7> :TagbarToggle<CR>
 
-" Stop highlighting really long lines is SLOW
-set synmaxcol=240
-
-" Make gitgutter's column look nicer
-highlight clear SignColumn
-
-" Highlight long lines
-highlight OverLength ctermbg=DarkGrey ctermfg=White
-map <F8> :match OverLength /\%81v.\+/<cr>
-set textwidth=80
-
-" Esc is not Vim's friend
-cnoremap jk <Esc>
-inoremap jk <C-[>
-inoremap jw <C-[>:w <cr>
-
 " Drop to shell
 map <leader>ba :shell<cr>
 
@@ -214,9 +199,26 @@ autocmd FileType mail setlocal spell
 
 set background=light
 colorscheme solarized
-" Works with non-Solarized terminal colours
-function NoTerminalColours ()
-  let g:solarized_termcolors = 256
-  colorscheme solarized
-endfunction
-map <F3> :call NoTerminalColours()<CR>
+" " Works with non-Solarized terminal colours
+" function NoTerminalColours ()
+"   let g:solarized_termcolors = 256
+"   colorscheme solarized
+" endfunction
+" map <F6> :call NoTerminalColours()<CR>
+call togglebg#map("<F5>")
+
+" Stop highlighting really long lines is SLOW
+set synmaxcol=240
+
+" Make gitgutter's column look nicer
+highlight clear SignColumn
+
+" Highlight long lines
+set textwidth=80
+set colorcolumn=+1
+
+" Esc is not Vim's friend
+cnoremap jk <Esc>
+inoremap jk <C-[>
+inoremap jw <C-[>:w <cr>
+
