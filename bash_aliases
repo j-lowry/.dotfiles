@@ -2,16 +2,18 @@
 alias l='ls'
 alias ll='ls -al'
 alias rsyncssh='rsync --archive --compress --progress --rsh=ssh'
+alias ctagsgo='ctags-exuberant -R *'
 
 # Webserver
 alias simplehttpserver='python -m SimpleHTTPServer'
 
 # Other
+alias be='bundle exec'
 alias r='rails'
 alias ack='ack-grep'
 # Opens files matching an ack query in vim tabs
 function vck() {
-  vim -p `ack -l $1`
+  vim -p `ack -l $1 $2`
 }
 
 # SSH
@@ -30,6 +32,7 @@ alias gcm='git commit -m'
 alias gcmv='git commit' # Use Vim to enter message
 alias gcam='git commit --amend'
 alias gcma='git commit -am'
+alias gcp='git cherry-pick'
 alias gcv='git commit -v'
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -44,6 +47,7 @@ alias gp='git push'
 alias gpp='git pull && git push'
 alias gpt='git push --tags'
 alias gpu='git pull'
+alias gpur='git pull --rebase'
 alias gre='git rebase'
 alias grei='git rebase --interactive'
 alias grm='git rm'
