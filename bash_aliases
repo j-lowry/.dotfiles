@@ -17,7 +17,6 @@ function vck() {
 }
 
 # SSH
-alias sshr='ssh rowan@rho.rookstudios.net'
 # alias iotatunnel='ssh -f -N -D 9999 rowan@iota.rookstudios.net'
 
 # Git

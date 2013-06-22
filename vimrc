@@ -1,7 +1,6 @@
 " Must come first because it changes other options.
 set nocompatible
 
-
 silent! call pathogen#infect() 
 silent! call pathogen#helptags()
 
@@ -82,7 +81,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Tab mappings
-map <leader>tt :tabnew<cr>
+map <leader>t :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
@@ -147,6 +146,10 @@ if filereadable("package.json")
   map <leader>nt :!npm test<cr>
 endif
 
+" Search using ack
+map <leader>a :Ack 
+
+
 " Git
 map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
@@ -156,7 +159,7 @@ map <leader>gp :!git push<cr>
 """ Filetype Configurations
 
 " Ruby
-autocmd FileType ruby setlocal foldmethod=manual shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal foldmethod=indent shiftwidth=2 tabstop=2
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 
 " Javascript
@@ -174,7 +177,7 @@ autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
 map <leader>cc :CoffeeCompile 15<cr>
-map <leader>cC :CoffeeCompile vertical 15<cr>
+map <leader>cC :CoffeeCompile vertical<cr>
 
 
 " Python
@@ -194,9 +197,10 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
-" Email (vmail)
-autocmd FileType mail setlocal spell
 
+"TODO: add gitcommit specific
+" Git files/commits
+" set textwidth=80
 set background=light
 colorscheme solarized
 " " Works with non-Solarized terminal colours

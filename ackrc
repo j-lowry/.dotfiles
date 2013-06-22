@@ -3,3 +3,5 @@
 --type-set=coffee=.coffee
 --type-set=haml=.haml
 --type-set=css=.sass,.scss
+--type-set=rb=.rb
+--type-set=erb=.erb
