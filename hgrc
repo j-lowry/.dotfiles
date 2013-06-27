@@ -1,0 +1,4 @@
+[ui]
+username = rowan udell <rowanu@gmail.com>
+verbose = true
+ignore = ~/.hgignore
