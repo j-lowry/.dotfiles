@@ -10,7 +10,6 @@ alias simplehttpserver='python -m SimpleHTTPServer'
 # Other
 alias be='bundle exec'
 alias r='rails'
-alias ack='ack-grep'
 # Opens files matching an ack query in vim tabs
 function vck() {
   vim -p `ack -l $1 $2`

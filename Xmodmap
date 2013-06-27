@@ -1,3 +1,4 @@
+keycode 102 = Super_L
 ! Make mod4 work on laptop
 add mod4 = Super_L
 ! Change caps lock to ctrl
