@@ -2,6 +2,6 @@ keycode 102 = Super_L
 ! Make mod4 work on laptop
 add mod4 = Super_L
 ! Change caps lock to ctrl
-remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
+keycode 66 = Control_L
+clear Lock
 add Control = Control_L
