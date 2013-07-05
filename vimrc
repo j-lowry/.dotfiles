@@ -147,7 +147,7 @@ if filereadable("package.json")
 endif
 
 " Search using ack
-map <leader>a :Ack 
+map <leader>a :Ack
 
 
 " Git
