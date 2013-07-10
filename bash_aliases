@@ -3,6 +3,7 @@ alias l='ls'
 alias ll='ls -al'
 alias rsyncssh='rsync --archive --compress --progress --rsh=ssh'
 alias ctagsgo='ctags-exuberant -R *'
+alias xclip='xclip -selection clipboard'
 
 # Webserver
 alias simplehttpserver='python -m SimpleHTTPServer'
