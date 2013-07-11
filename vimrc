@@ -13,18 +13,6 @@ set t_Co=256 " Terminal colours available
 
 runtime macros/matchit.vim        " Load the matchit plugin.
 
-" Text completion
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-        \ if &omnifunc == "" |
-        \   setlocal omnifunc=syntaxcomplete#Complete |
-        \ endif
-endif
-set completeopt=longest,menuone
-let g:SuperTabMappingBackward = '<tab>'
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabLongestHighlight = 1
-
 " CtrlP
 let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
 
