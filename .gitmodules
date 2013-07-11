@@ -25,13 +25,6 @@
 [submodule "vim/bundle/rooter"]
 	path = vim/bundle/rooter
 	url = git://github.com/airblade/vim-rooter.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
-[submodule "vim/bundle/AutoComplPop"]
-	path = vim/bundle/AutoComplPop
-	url = git://github.com/vim-scripts/AutoComplPop.git
-  ignore = untracked
 [submodule "vim/bundle/auto-pairs"]
 	path = vim/bundle/auto-pairs
 	url = git://github.com/jiangmiao/auto-pairs.git
