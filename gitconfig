@@ -8,5 +8,5 @@
   diff = auto
   interactive = auto
   status = auto
-[core]
-	excludesfile = /Users/rowanu/.gitignore_global
+[push]
+	default = simple
