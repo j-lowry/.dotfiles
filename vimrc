@@ -6,6 +6,7 @@ silent! call pathogen#helptags()
 
 " for powerline? 
 set encoding=utf-8 
+let g:airline_powerline_fonts = 1
 
 filetype plugin indent on " Turn on file type detection.
 syntax enable " Turn on syntax highlighting.

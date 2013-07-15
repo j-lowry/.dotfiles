@@ -27,3 +27,6 @@ if [ -e `which git` ]
 then
   git config --global core.excludesfile ~/.gitignore_global
 fi
+
+# fonts - fc-cache is from the fontconfig
+fc-cache -vf ~/.fonts
