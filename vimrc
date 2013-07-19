@@ -4,15 +4,15 @@ set nocompatible
 silent! call pathogen#infect() 
 silent! call pathogen#helptags()
 
-" for powerline? 
-set encoding=utf-8 
-let g:airline_powerline_fonts = 1
-
 filetype plugin indent on " Turn on file type detection.
 syntax enable " Turn on syntax highlighting.
 set t_Co=256 " Terminal colours available
 
 runtime macros/matchit.vim        " Load the matchit plugin.
+
+" Enable patched fonts for status bar
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'light'
 
 " CtrlP
 let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
@@ -136,7 +136,7 @@ if filereadable("package.json")
 endif
 
 " Search using ack
-map <leader>a :Ack
+map <leader>a :Ack 
 
 
 " Git
