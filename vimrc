@@ -187,19 +187,6 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
 
-"TODO: add gitcommit specific
-" Git files/commits
-" set textwidth=80
-set background=light
-colorscheme solarized
-" " Works with non-Solarized terminal colours
-" function NoTerminalColours ()
-"   let g:solarized_termcolors = 256
-"   colorscheme solarized
-" endfunction
-" map <F6> :call NoTerminalColours()<CR>
-call togglebg#map("<F5>")
-
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
 
@@ -215,3 +202,6 @@ cnoremap jk <Esc>
 inoremap jk <C-[>
 inoremap jw <C-[>:w <cr>
 
+set background=light
+colorscheme solarized
+call togglebg#map("<F5>")
