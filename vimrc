@@ -10,9 +10,16 @@ set t_Co=256 " Terminal colours available
 
 runtime macros/matchit.vim        " Load the matchit plugin.
 
-" Enable patched fonts for status bar
+""" Plugin Configurations
+
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'light'
+
+" vim-javacript
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " CtrlP
 let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
@@ -154,10 +161,10 @@ autocmd FileType ruby set omnifunc=rubycomplete#Complete
 " Javascript
 autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=2 tabstop=2
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript set makeprg=jslint\ %
-autocmd FileType javascript set efm=%-P%f,
-             \%E%>\ #%n\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
-             \%-G%f\ is\ OK.,%-Q
+autocmd FileType javascript setlocal makeprg=jslint\ %
+autocmd FileType javascript setlocal errorformat=%-P%f,
+                    \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
+                    \%-G%f\ is\ OK.,%-Q
 
 " Coffeescript
 let coffee_make_options = '--print'
@@ -167,7 +174,6 @@ autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
 map <leader>cc :CoffeeCompile 15<cr>
 map <leader>cC :CoffeeCompile vertical<cr>
-
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
