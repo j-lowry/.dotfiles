@@ -33,7 +33,7 @@ set hidden                        " Handle multiple buffers better.
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
-set wildignore+=*/bower_components/*,*/node_modules/*
+set wildignore+=*/bower_components/*,*/node_modules/*,*/.tmp/*
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
