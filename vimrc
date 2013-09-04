@@ -1,8 +1,32 @@
 " Must come first because it changes other options.
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-silent! call pathogen#infect() 
-silent! call pathogen#helptags()
+" Vundle
+Bundle "Townk/vim-autoclose"
+Bundle "Valloric/YouCompleteMe"
+Bundle "airblade/vim-gitgutter"
+Bundle "airblade/vim-rooter"
+Bundle "altercation/vim-colors-solarized"
+Bundle "bling/vim-airline"
+Bundle "gmarik/vundle"
+Bundle "jiangmiao/auto-pairs"
+Bundle "kchmck/vim-coffee-script"
+Bundle "kien/ctrlp.vim"
+Bundle "majutsushi/tagbar"
+Bundle "mileszs/ack.vim"
+Bundle "othree/javascript-libraries-syntax.vim"
+Bundle "pangloss/vim-javascript"
+Bundle "tomtom/tcomment_vim"
+Bundle "tpope/vim-endwise"
+Bundle "tpope/vim-fugitive"
+Bundle "tpope/vim-ragtag"
+Bundle "tpope/vim-rails"
+Bundle "tpope/vim-surround"
+Bundle "vim-scripts/AutoTag"
+Bundle "vim-scripts/simplefold"
 
 filetype plugin indent on " Turn on file type detection.
 syntax enable " Turn on syntax highlighting.
