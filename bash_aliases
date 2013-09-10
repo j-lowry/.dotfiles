@@ -22,6 +22,8 @@ function vck() {
 # Port Proxy
 alias sigmatunnel='ssh -nNT -R 8000:localhost:8000 sigma.rookstudios.com'
 
+# Mecurial
+alias hgl="hg log --template '{node|short} | {date|isodatesec} | {author|user}: {desc|strip|firstline}\n'"
 # Git
 alias ga='git add'
 alias gb='git branch'
@@ -30,7 +32,8 @@ alias gc='git checkout'
 alias gcb='git checkout -b'
 alias gct='git checkout -t'
 alias gcl='git clone'
-alias gcm='git commit -m'
+alias gca='git commit -a'
+alias gcmm='git commit -m'
 alias gcmv='git commit' # Use Vim to enter message
 alias gcam='git commit --amend'
 alias gcma='git commit -am'
