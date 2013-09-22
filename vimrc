@@ -5,31 +5,32 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Vundle
-Bundle "Townk/vim-autoclose"
-Bundle "Valloric/YouCompleteMe"
 Bundle "airblade/vim-gitgutter"
 Bundle "airblade/vim-rooter"
 Bundle "altercation/vim-colors-solarized"
 Bundle "bling/vim-airline"
 Bundle "gmarik/vundle"
 Bundle "jiangmiao/auto-pairs"
-Bundle "kchmck/vim-coffee-script"
 Bundle "kien/ctrlp.vim"
+Bundle "kchmck/vim-coffee-script"
 Bundle "majutsushi/tagbar"
 Bundle "mileszs/ack.vim"
 Bundle "othree/javascript-libraries-syntax.vim"
 Bundle "pangloss/vim-javascript"
+Bundle "scrooloose/syntastic"
 Bundle "tomtom/tcomment_vim"
+Bundle "townk/vim-autoclose"
 Bundle "tpope/vim-endwise"
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-ragtag"
 Bundle "tpope/vim-rails"
 Bundle "tpope/vim-surround"
+Bundle "valloric/YouCompleteMe"
 Bundle "vim-scripts/AutoTag"
 Bundle "vim-scripts/simplefold"
 
-filetype plugin indent on " Turn on file type detection.
 syntax enable " Turn on syntax highlighting.
+filetype plugin indent on " Turn on file type detection.
 set t_Co=256 " Terminal colours available
 
 runtime macros/matchit.vim        " Load the matchit plugin.
@@ -45,6 +46,18 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
+" Syntastic
+nmap <leader>ln :lnext<cr>
+nmap <leader>lp :lprevious<cr>
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠' 
+" let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+" Checkers
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_coffee_checkers = ['coffee']
+
 " CtrlP
 let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
 
@@ -57,7 +70,7 @@ set hidden                        " Handle multiple buffers better.
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
-set wildignore+=*/bower_components/*,*/node_modules/*,*/.tmp/*
+set wildignore+=*/bower_components/*,*/node_modules/*,*/.tmp/*,*/dist/*
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
@@ -123,8 +136,6 @@ nmap <leader>sl  :rightbelow vnew<cr>
 nmap <leader>sk     :leftabove  new<cr>
 nmap <leader>sj   :rightbelow new<cr>
 
-" Make
-map <leader>mm :make<cr><cr>
 " Quick save
 nmap <leader>w :w!<cr>
 " clear highlighting
@@ -170,7 +181,6 @@ endif
 " Search using ack
 map <leader>a :Ack 
 
-
 " Git
 map <leader>gs :Gstatus<cr>
 map <leader>gb :Gblame<cr>
@@ -186,19 +196,16 @@ autocmd FileType ruby set omnifunc=rubycomplete#Complete
 " Javascript
 autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=2 tabstop=2
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType javascript setlocal makeprg=jslint\ %
-autocmd FileType javascript setlocal errorformat=%-P%f,
-                    \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
-                    \%-G%f\ is\ OK.,%-Q
+" autocmd FileType javascript setlocal makeprg=jslint\ %
+" autocmd FileType javascript setlocal errorformat=%-P%f,
+"                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
+"                     \%-G%f\ is\ OK.,%-Q
 
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
 autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
-autocmd BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
-map <leader>cc :CoffeeCompile 15<cr>
-map <leader>cC :CoffeeCompile vertical<cr>
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
