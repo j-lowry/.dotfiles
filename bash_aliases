@@ -65,6 +65,7 @@ alias gsub='git submodule'
 alias gsubi='git submodule init'
 alias gsubu='git submodule update'
 alias gt='git tag'
+alias gundo='git reset --soft HEAD~1' # Only for un-pushed commits
 
 # Colours
 Color_Off="\[\033[0m\]"       # Text Reset
