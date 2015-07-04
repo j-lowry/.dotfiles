@@ -5,14 +5,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Vundle
+Bundle "gmarik/vundle"
 Bundle "airblade/vim-gitgutter"
 Bundle "airblade/vim-rooter"
 Bundle "altercation/vim-colors-solarized"
 Bundle "bling/vim-airline"
-Bundle "gmarik/vundle"
 Bundle "jiangmiao/auto-pairs"
 Bundle "kien/ctrlp.vim"
-Bundle "kchmck/vim-coffee-script"
 Bundle "majutsushi/tagbar"
 Bundle "mileszs/ack.vim"
 Bundle "othree/javascript-libraries-syntax.vim"
@@ -25,9 +24,29 @@ Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-ragtag"
 Bundle "tpope/vim-rails"
 Bundle "tpope/vim-surround"
-Bundle "valloric/YouCompleteMe"
 Bundle "vim-scripts/AutoTag"
 Bundle "vim-scripts/simplefold"
+
+" Auto complete
+Bundle "Shougo/neocomplete.vim"
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+" JavaScript
+Bundle "kchmck/vim-coffee-script"
+
+" Puppet
+Bundle "rodjek/vim-puppet"
 
 syntax enable " Turn on syntax highlighting.
 filetype plugin indent on " Turn on file type detection.
@@ -55,7 +74,7 @@ let g:syntastic_warning_symbol='⚠'
 " let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 " Checkers
-let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_coffee_checkers = ['coffee']
 
 " CtrlP
@@ -111,8 +130,8 @@ nnoremap ' `
 nnoremap ` '
 
 " leader mappings
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Tab mappings
 map <leader>t :tabnew<cr>
@@ -200,12 +219,12 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType javascript setlocal errorformat=%-P%f,
 "                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
 "                     \%-G%f\ is\ OK.,%-Q
-
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
 autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
+autocmd BufNewFile,BufRead *.cson set ft=coffee
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
