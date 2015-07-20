@@ -14,7 +14,6 @@ Bundle "jiangmiao/auto-pairs"
 Bundle "kien/ctrlp.vim"
 Bundle "majutsushi/tagbar"
 Bundle "mileszs/ack.vim"
-Bundle "othree/javascript-libraries-syntax.vim"
 Bundle "pangloss/vim-javascript"
 Bundle "scrooloose/syntastic"
 Bundle "tomtom/tcomment_vim"
@@ -40,13 +39,16 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
+Bundle 'Shougo/neosnippet'
+Bundle 'Shougo/neosnippet-snippets'
 
 " JavaScript
 Bundle "kchmck/vim-coffee-script"
+" Bundle "othree/javascript-libraries-syntax.vim"
 
 " Puppet
 Bundle "rodjek/vim-puppet"
+Bundle "godlygeek/tabular"
 
 syntax enable " Turn on syntax highlighting.
 filetype plugin indent on " Turn on file type detection.
@@ -237,9 +239,6 @@ autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less set filetype=css
-
-" Data files
-autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
