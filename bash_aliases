@@ -22,8 +22,6 @@ function vck() {
 # Port Proxy
 alias sigmatunnel='ssh -nNT -R 8000:localhost:8000 sigma.rookstudios.com'
 
-# Mecurial
-alias hgl="hg log --template '{node|short} | {date|isodatesec} | {author|user}: {desc|strip|firstline}\n'"
 # Git
 alias ga='git add'
 alias gap='git add -p'
