@@ -21,6 +21,7 @@ function vck() {
 # alias sigmatunnel='ssh -f -N -D 9999 rowan@iota.rookstudios.net'
 # Port Proxy
 alias sigmatunnel='ssh -nNT -R 8000:localhost:8000 sigma.rookstudios.com'
+alias sshec2='ssh -l ec2-user '
 
 # Git
 alias ga='git add'
