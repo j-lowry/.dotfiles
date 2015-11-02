@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle "gmarik/vundle"
 Bundle "airblade/vim-gitgutter"
 Bundle "airblade/vim-rooter"
-Bundle "altercation/vim-colors-solarized"
 Bundle "bling/vim-airline"
 Bundle "jiangmiao/auto-pairs"
 Bundle "kien/ctrlp.vim"
@@ -72,7 +71,7 @@ nmap <leader>ln :lnext<cr>
 nmap <leader>lp :lprevious<cr>
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠' 
+let g:syntastic_warning_symbol='⚠'
 " let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 " Checkers
@@ -199,7 +198,7 @@ if filereadable("package.json")
   map <leader>nt :!npm test<cr>
 endif
 
-" Search using ack
+" Search using ack (trailing whitespace intentional)
 map <leader>a :Ack 
 
 " Git
@@ -258,6 +257,5 @@ cnoremap jk <Esc>
 inoremap jk <C-[>
 inoremap jw <C-[>:w <cr>
 
-set background=light
-colorscheme solarized
-call togglebg#map("<F5>")
+" set background=light
+colorscheme Tomorrow-Night-Eighties
