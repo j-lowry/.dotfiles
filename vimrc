@@ -220,10 +220,12 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType javascript setlocal errorformat=%-P%f,
 "                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
 "                     \%-G%f\ is\ OK.,%-Q
+autocmd FileType json setlocal foldmethod=indent
+
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
-autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 autocmd BufNewFile,BufRead *.cson set ft=coffee
 
@@ -239,8 +241,11 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less set filetype=css
 
+" YAML
+autocmd FileType yaml setlocal foldmethod=indent
+
 " Text
-autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell 
+autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
@@ -251,6 +256,8 @@ highlight clear SignColumn
 " Highlight long lines
 set textwidth=80
 set colorcolumn=+1
+" Highlight trailing whitespace
+match ErrorMsg '\s\+$'
 
 " Esc is not Vim's friend
 cnoremap jk <Esc>
