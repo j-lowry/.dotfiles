@@ -13,7 +13,8 @@ alias be='bundle exec'
 alias r='rails'
 # Opens files matching an ack query in vim tabs
 function vck() {
-  vim -p `ack -l $1 $2`
+  vim -p `ack -l $@`
+}
 }
 
 # SSH
