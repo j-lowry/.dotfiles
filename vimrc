@@ -9,8 +9,10 @@ Bundle "gmarik/vundle"
 Bundle "airblade/vim-gitgutter"
 Bundle "airblade/vim-rooter"
 Bundle "bling/vim-airline"
+Bundle "digitaltoad/vim-jade"
 Bundle "jiangmiao/auto-pairs"
 Bundle "kien/ctrlp.vim"
+Bundle "lambdatoast/elm.vim"
 Bundle "majutsushi/tagbar"
 Bundle "mileszs/ack.vim"
 Bundle "pangloss/vim-javascript"
@@ -40,6 +42,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 
 " JavaScript
 Bundle "kchmck/vim-coffee-script"
@@ -56,6 +62,9 @@ set t_Co=256 " Terminal colours available
 runtime macros/matchit.vim        " Load the matchit plugin.
 
 """ Plugin Configurations
+
+" CtrlP
+let g:ctrlp_switch_buffer = 0 " Disable buffer switching
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -78,11 +87,10 @@ let g:syntastic_loc_list_height=5
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_coffee_checkers = ['coffee']
 
-" CtrlP
-let g:ctrlp_switch_buffer = 0 " Disable buffer switing 
-
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
+" Only update if needed ie. during macros
+set lazyredraw
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 
@@ -97,6 +105,8 @@ set smartcase                     " But case-sensitive if expression contains a 
 
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
+" Display the closing match eg. ()
+set showmatch
 set cursorline
 set cursorcolumn
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -146,15 +156,15 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 " Split window
-nmap <leader>swh  :topleft  vnew<cr>
+nmap <leader>swh :topleft  vnew<cr>
 nmap <leader>swl :botright vnew<cr>
-nmap <leader>swk    :topleft  new<cr>
-nmap <leader>swj  :botright new<cr>
+nmap <leader>swk :topleft  new<cr>
+nmap <leader>swj :botright new<cr>
 " Split buffer
-nmap <leader>sh   :leftabove  vnew<cr>
-nmap <leader>sl  :rightbelow vnew<cr>
-nmap <leader>sk     :leftabove  new<cr>
-nmap <leader>sj   :rightbelow new<cr>
+nmap <leader>sh :leftabove  vnew<cr>
+nmap <leader>sl :rightbelow vnew<cr>
+nmap <leader>sk :leftabove  new<cr>
+nmap <leader>sj :rightbelow new<cr>
 
 " Quick save
 nmap <leader>w :w!<cr>
@@ -164,12 +174,18 @@ nmap <space> <space>:noh<cr>
 nmap <silent> <leader>sp :set spell!<cr>
 set spelllang=en_au
 
-" disable automatic folding
-set nofoldenable
+" Enable folding, but with most folds open by default
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
 
 " REVIEW: what do these do?
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+" Replace unicode quot and apos in ERB files
+autocmd BufReadPost *.erb silent! %s/&apos;/'/g
+autocmd BufReadPost *.erb silent! %s/&quot;/"/g
 
 " Tags
 map <leader>ct :silent! !ctags -R . 2> /dev/null &<cr>:redraw!<cr>
@@ -198,7 +214,7 @@ if filereadable("package.json")
   map <leader>nt :!npm test<cr>
 endif
 
-" Search using ack (trailing whitespace intentional)
+" Search using ack
 map <leader>a :Ack 
 
 " Git
@@ -220,14 +236,13 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType javascript setlocal errorformat=%-P%f,
 "                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
 "                     \%-G%f\ is\ OK.,%-Q
-autocmd FileType json setlocal foldmethod=indent
-
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
 autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
 autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
 autocmd BufNewFile,BufRead *.cson set ft=coffee
+autocmd FileType json setlocal foldmethod=indent
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
@@ -247,6 +262,9 @@ autocmd FileType yaml setlocal foldmethod=indent
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
 
+" Jenkins (Puppet) job templates
+autocmd BufNewFile,BufRead *.xml.erb setlocal noeol binary expandtab
+
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
 
@@ -262,7 +280,7 @@ match ErrorMsg '\s\+$'
 " Esc is not Vim's friend
 cnoremap jk <Esc>
 inoremap jk <C-[>
-inoremap jw <C-[>:w <cr>
+" inoremap jw <C-[>:w <cr>
 
 " set background=light
 colorscheme Tomorrow-Night-Eighties
