@@ -15,7 +15,6 @@ alias r='rails'
 function vck() {
   vim -p `ack -l $@`
 }
-}
 
 # SSH
 # SOCKS proxy
