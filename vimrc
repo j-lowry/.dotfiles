@@ -1,34 +1,35 @@
 " Must come first because it changes other options.
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Vundle
-Bundle "gmarik/vundle"
-Bundle "airblade/vim-gitgutter"
-Bundle "airblade/vim-rooter"
-Bundle "bling/vim-airline"
-Bundle "digitaltoad/vim-jade"
-Bundle "jiangmiao/auto-pairs"
-Bundle "kien/ctrlp.vim"
-Bundle "lambdatoast/elm.vim"
-Bundle "majutsushi/tagbar"
-Bundle "mileszs/ack.vim"
-Bundle "pangloss/vim-javascript"
-Bundle "scrooloose/syntastic"
-Bundle "tomtom/tcomment_vim"
-Bundle "townk/vim-autoclose"
-Bundle "tpope/vim-endwise"
-Bundle "tpope/vim-fugitive"
-Bundle "tpope/vim-ragtag"
-Bundle "tpope/vim-rails"
-Bundle "tpope/vim-surround"
-Bundle "vim-scripts/AutoTag"
-Bundle "vim-scripts/simplefold"
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-rooter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'townk/vim-autoclose'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/AutoTag'
+Plugin 'vim-scripts/simplefold'
 
 " Auto complete
-Bundle "Shougo/neocomplete.vim"
+Plugin 'Shougo/neocomplete.vim'
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -40,21 +41,22 @@ inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 
 " JavaScript
-Bundle "kchmck/vim-coffee-script"
-" Bundle "othree/javascript-libraries-syntax.vim"
+Plugin 'kchmck/vim-coffee-script'
+" Plugin 'othree/javascript-libraries-syntax.vim'
 
 " Puppet
-Bundle "rodjek/vim-puppet"
-Bundle "godlygeek/tabular"
+Plugin 'rodjek/vim-puppet'
+Plugin 'godlygeek/tabular'
 
+call vundle#end()
 syntax enable " Turn on syntax highlighting.
 filetype plugin indent on " Turn on file type detection.
 set t_Co=256 " Terminal colours available
@@ -68,7 +70,7 @@ let g:ctrlp_switch_buffer = 0 " Disable buffer switching
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'light'
+let g:airline_theme = 'tomorrow'
 
 " vim-javacript
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -283,4 +285,4 @@ inoremap jk <C-[>
 " inoremap jw <C-[>:w <cr>
 
 " set background=light
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow

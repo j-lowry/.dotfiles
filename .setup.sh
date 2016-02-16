@@ -22,6 +22,8 @@ do
 done
 
 # setup files
+# Include Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # add git global ignore file
 if [ -e `which git` ]
 then
