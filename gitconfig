@@ -2,7 +2,7 @@
 	name = rowan
 	email = rowanu@gmail.com
 [alias]
-  hist = log --pretty=format:\"%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset\" --graph --date=short
+  hist = log --pretty=format:\"%C(yellow)%h%Cblue%d%Creset %s %C(green) %an, %ar%Creset\" --graph --date=short
 [color]
   branch = auto
   diff = auto
@@ -10,3 +10,5 @@
   status = auto
 [push]
 	default = simple
+[core]
+	excludesfile = /Users/rowan/.gitignore_global
