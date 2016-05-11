@@ -167,6 +167,17 @@ function git_status {
   fi
 }
 
+function aws_status {
+  aws_status="☁"
+  if ! [ -z ${AWS_PROFILE} ]; then
+    aws_status="${aws_status} ${AWS_PROFILE}"
+    if ! [ -z ${AWS_REGION} ]; then
+      aws_status="${aws_status} ${AWS_REGION}"
+    fi
+    echo "${aws_status}"
+  fi
+}
+
 # ♖ Prompt
 PS1=""
 PS1="$PS1$Purple$Username$Purple@$Hostname "
@@ -174,7 +185,8 @@ PS1="$PS1$Blue\$(timestamp)$NewLine"
 PS1="$PS1$Purple[$Yellow$Command$Purple] "
 PS1="$PS1$Cyan$PathShort "
 PS1="$PS1$Color_Off\$(git_status) "
-PS1="$PS1$NewLine"
+PS1="$PS1$Yellow\$(aws_status) "
+PS1="$PS1$Color_Off$NewLine"
 export PS1
 
 # Vi mode bash
