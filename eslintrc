@@ -3,8 +3,11 @@
     "browser": true,
     "node": true
   },
+  "parserOptions": {
+      "ecmaVersion": 6,
+  },
   "rules": {
     "quotes": [2, "single"],
-    "strict": [2, "global"]
+    "semi": [2, "always"]
   }
 }
