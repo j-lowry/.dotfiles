@@ -17,12 +17,7 @@ function vck() {
 }
 
 # SSH
-# SOCKS proxy
-# alias sigmatunnel='ssh -f -N -D 9999 rowan@iota.rookstudios.net'
-# Port Proxy
-# alias sigmatunnel='ssh -nNT -R 8000:localhost:8000 sigma.rookstudios.com'
 alias sshec2='ssh -l ec2-user '
-alias sshru='ssh -l rowan.udell '
 
 # Git
 alias ga='git add'
@@ -40,7 +35,7 @@ alias gcma='git commit -am'
 alias gcmam='git commit --amend'
 alias gcmm='git commit -m'
 alias gcmv='git commit -v'
-alias gcp='git cherry-pick'
+alias gcherry='git cherry-pick'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gf='git fetch'
