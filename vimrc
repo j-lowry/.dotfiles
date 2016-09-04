@@ -13,7 +13,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
-Plugin 'lambdatoast/elm.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'pangloss/vim-javascript'
@@ -46,7 +45,6 @@ Plugin 'Shougo/neosnippet-snippets'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 
 " JavaScript
 Plugin 'kchmck/vim-coffee-script'
@@ -88,6 +86,7 @@ let g:syntastic_loc_list_height=5
 " Checkers
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_coffee_checkers = ['coffee']
+
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -216,7 +215,9 @@ if filereadable("package.json")
   map <leader>nt :!npm test<cr>
 endif
 
-" Search using ack
+" Search using ag and ack.vim
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
 map <leader>a :Ack 
 
 " Git
@@ -229,11 +230,11 @@ map <leader>gp :!git push<cr>
 
 " Ruby
 autocmd FileType ruby setlocal foldmethod=indent shiftwidth=2 tabstop=2
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Javascript
 autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=2 tabstop=2
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType javascript setlocal makeprg=jslint\ %
 " autocmd FileType javascript setlocal errorformat=%-P%f,
 "                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
@@ -241,22 +242,21 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
-autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
-autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
-autocmd BufNewFile,BufRead *.cson set ft=coffee
+autocmd BufNewFile,BufRead *.cson,*.coffee set ft=coffee
+autocmd FileType coffee setlocal shiftwidth=2 foldenable foldmethod=indent
 autocmd FileType json setlocal foldmethod=indent
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
-autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p|cwindow
-autocmd FileType python set errorformat=%f:%l:\ %m,%-G%.%#
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p|cwindow
+autocmd FileType python setlocal errorformat=%f:%l:\ %m,%-G%.%#
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 " HTML/CSS/LESS
-autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less set filetype=css
+autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " YAML
 autocmd FileType yaml setlocal foldmethod=indent
@@ -266,6 +266,9 @@ autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
 
 " Jenkins (Puppet) job templates
 autocmd BufNewFile,BufRead *.xml.erb setlocal noeol binary expandtab
+
+" CFN Templates
+autocmd BufNewFile,BufRead *.template set ft=json
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
@@ -285,4 +288,4 @@ inoremap jk <C-[>
 " inoremap jw <C-[>:w <cr>
 
 " set background=light
-colorscheme Tomorrow
+colorscheme Tomorrow-Night
