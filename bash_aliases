@@ -8,12 +8,9 @@ alias xclip='xclip -selection clipboard'
 # Webserver
 alias simplehttpserver='python -m SimpleHTTPServer'
 
-# Other
-alias be='bundle exec'
-alias r='rails'
-# Opens files matching an ack query in vim tabs
-function vck() {
-  vim -p `ack -l $@`
+# Opens files matching an ag query in vim tabs
+function vag() {
+  vim -p `ag -l $@`
 }
 
 # SSH
