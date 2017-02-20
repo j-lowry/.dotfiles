@@ -6,14 +6,15 @@ call vundle#begin()
 
 " Vundle
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Konfekt/FastFold'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'airblade/vim-rooter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'jacoborus/tender'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
-Plugin 'lambdatoast/elm.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'pangloss/vim-javascript'
@@ -47,7 +48,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-
 " JavaScript
 Plugin 'kchmck/vim-coffee-script'
 " Plugin 'othree/javascript-libraries-syntax.vim'
@@ -70,7 +70,8 @@ let g:ctrlp_switch_buffer = 0 " Disable buffer switching
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'tomorrow'
+let g:tender_airline = 1
+let g:airline_theme = 'tenderplus'
 
 " vim-javacript
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -87,7 +88,9 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_loc_list_height=5
 " Checkers
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_json_checkers = ['eslint']
 let g:syntastic_coffee_checkers = ['coffee']
+
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -100,12 +103,13 @@ set hidden                        " Handle multiple buffers better.
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
-set wildignore+=*/bower_components/*,*/node_modules/*,*/.tmp/*,*/dist/*
+set wildignore+=*/bower_components/*,*/node_modules/*,*/.tmp/*,*/dist/*,*.pyc
 
 set ignorecase                    " Case-insensitive searching.
 set smartcase                     " But case-sensitive if expression contains a capital letter.
 
-set number                        " Show line numbers.
+" set number                        " Show line numbers.
+set relativenumber
 set ruler                         " Show cursor position.
 " Display the closing match eg. ()
 set showmatch
@@ -113,6 +117,13 @@ set cursorline
 set cursorcolumn
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 nnoremap <F3> :set list!<CR>
+" Relative/Absolute line numbers
+autocmd InsertEnter * :set relativenumber!
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+autocmd InsertLeave * :set number!
+
+
 
 " Searching
 set incsearch                     " Highlight matches as you type.
@@ -178,7 +189,7 @@ set spelllang=en_au
 
 " Enable folding, but with most folds open by default
 set foldenable
-set foldlevelstart=10
+set foldlevelstart=1
 set foldnestmax=10
 
 " REVIEW: what do these do?
@@ -216,7 +227,9 @@ if filereadable("package.json")
   map <leader>nt :!npm test<cr>
 endif
 
-" Search using ack
+" Search using ag and ack.vim
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
 map <leader>a :Ack 
 
 " Git
@@ -229,11 +242,11 @@ map <leader>gp :!git push<cr>
 
 " Ruby
 autocmd FileType ruby setlocal foldmethod=indent shiftwidth=2 tabstop=2
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Javascript
 autocmd FileType javascript setlocal foldmethod=syntax shiftwidth=2 tabstop=2
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType javascript setlocal makeprg=jslint\ %
 " autocmd FileType javascript setlocal errorformat=%-P%f,
 "                     \%A%>%\\s%\\?#%*\\d\ %m,%Z%.%#Line\ %l\\,\ Pos\ %c,
@@ -241,31 +254,48 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " Coffeescript
 let coffee_make_options = '--print'
 let g:tlist_coffee_settings = 'coffee;f:function;v:variable'
-autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
-autocmd BufNewFile,BufRead *.coffee setlocal foldenable foldmethod=indent
-autocmd BufNewFile,BufRead *.cson set ft=coffee
+autocmd BufNewFile,BufRead *.cson,*.coffee set ft=coffee
+autocmd FileType coffee setlocal shiftwidth=2 foldenable foldmethod=indent
 autocmd FileType json setlocal foldmethod=indent
 
 " Python
 autocmd FileType python setlocal foldmethod=indent shiftwidth=4 tabstop=4
-autocmd FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p|cwindow
-autocmd FileType python set errorformat=%f:%l:\ %m,%-G%.%#
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p|cwindow
+autocmd FileType python setlocal errorformat=%f:%l:\ %m,%-G%.%#
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" Golang
+Plugin 'fatih/vim-go'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
+let g:go_fmt_command = "goimports"
+" let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 0
 
 " HTML/CSS/LESS
-autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.less set filetype=css
+autocmd FileType css setlocal foldmethod=indent shiftwidth=2 tabstop=2
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
 " YAML
 autocmd FileType yaml setlocal foldmethod=indent
 
 " Text
 autocmd BufNewFile,BufRead *.md,*.markdown setlocal spell
+autocmd BufNewFile,BufRead *.md,*.markdown setlocal textwidth=0 wrapmargin=0
 
 " Jenkins (Puppet) job templates
 autocmd BufNewFile,BufRead *.xml.erb setlocal noeol binary expandtab
+
+" CFN Templates
+autocmd BufNewFile,BufRead *.template set ft=json
 
 " Stop highlighting really long lines is SLOW
 set synmaxcol=240
@@ -285,4 +315,4 @@ inoremap jk <C-[>
 " inoremap jw <C-[>:w <cr>
 
 " set background=light
-colorscheme Tomorrow
+colorscheme tender
