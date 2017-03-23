@@ -1,0 +1,34 @@
+install autoconf
+install ctags
+# install exercism
+install exiftool
+install gdrive
+install gist
+install git
+install gnu-sed
+install go
+install hugo
+install jq
+install libevent
+install libsigsegv
+install lua
+install luajit
+install node
+install openssl
+install packer
+install pandoc
+install python
+install rbenv
+install readline
+install reattach-to-user-namespace
+install ruby-build
+install saml2aws
+install sqlite
+install terminal-notifier
+install the_silver_searcher
+install tmux
+install unicreds
+install unrar
+install vim --override-system-vim --with-lua
+install watch
+install wget
